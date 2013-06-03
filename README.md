@@ -6,23 +6,7 @@ A basic helper for writing Datomic schema.
 ## Usage
 
 Datomic schema is wordy, so apply some sane defaults and allow overriding 
-where needed.
-
-```clojure
-(ns foo.schema
-  (:require [datomic.api :refer [tempid]]))
- 
-(defn- attribute [ident & options]
-  (let [defaults {:db/id (tempid :db.part/db)
-                  :db/ident ident
-                  :db/valueType :db.type/string
-                  :db/cardinality :db.cardinality/one
-                  :db.install/_attribute :db.part/db}]
-    (merge defaults
-           (apply hash-map options))))
-```
- 
-The minimum you can provide is just an attribute name...
+where needed. The minimum you can provide is just an attribute name...
  
 ```clojure
 (attribute :user/name)
